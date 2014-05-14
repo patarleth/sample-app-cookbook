@@ -1,0 +1,22 @@
+#!upstart
+description "Sample nodeJs Express app"
+
+start on stopped networking
+stop on runlevel [016]
+
+setuid deploy
+
+limit nofile 1000000 1000000
+
+console log
+
+script
+
+  cd /opt/deploy/sample-app
+
+  npm start
+
+end script
+
+respawn
+
